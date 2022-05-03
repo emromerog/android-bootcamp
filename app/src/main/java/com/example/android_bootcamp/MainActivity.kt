@@ -3,18 +3,54 @@ package com.example.android_bootcamp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+    private val workingsTV = findViewById<TextView>(R.id.workingsTV)
+    private val resultsTV = findViewById<TextView>(R.id.resultsTV)
+
+    private var canAddOperation = false
+    private var canAddDecimal = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    fun allClearAction(view: View) {
-        //workingsTV.text = ""
-        //resultsTV.text = ""
+    fun numberAction(view: View) {
+        if (view is Button) {
+            if (view.text == ".") {
+                if (canAddDecimal) {
+                    workingsTV.append(view.text)
+                }
+                canAddDecimal = false
+            } else {
+                workingsTV.append(view.text)
+            }
+            canAddOperation = true
+        }
     }
 
-    fun backSpaceAction(view: View) {}
+    fun operationAction(view: View) {
+        if (view is Button && canAddOperation) {
+            workingsTV.append(view.text)
+            canAddOperation = false
+            canAddDecimal = true
+        }
+    }
+
+    fun allClearAction(view: View) {
+        workingsTV.text = ""
+        resultsTV.text = ""
+    }
+
+    fun backSpaceAction(view: View) {
+        val length = workingsTV.length()
+        if (length > 0) {
+            workingsTV.text = workingsTV.text.subSequence(0, length - 1)
+        }
+    }
+
     fun equalsAction(view: View) {}
 }
