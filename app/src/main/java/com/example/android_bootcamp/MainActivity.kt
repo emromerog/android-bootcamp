@@ -7,8 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    val workingsTV = findViewById<TextView>(R.id.workingsTV)
-    val resultsTV = findViewById<TextView>(R.id.resultsTV)
+    //var workingsTV = findViewById<TextView>(R.id.workingsTV)
+    //var resultsTV = findViewById<TextView>(R.id.resultsTV)
 
     private var canAddOperation = false
     private var canAddDecimal = true
@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun numberAction(view: View) {
+        var workingsTV = findViewById<TextView>(R.id.workingsTV)
+        var resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         if (view is Button) {
             if (view.text == ".") {
                 if (canAddDecimal) {
@@ -33,6 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun operationAction(view: View) {
+        val workingsTV = findViewById<TextView>(R.id.workingsTV)
+        val resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         if (view is Button && canAddOperation) {
             workingsTV.append(view.text)
             canAddOperation = false
@@ -41,11 +47,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun allClearAction(view: View) {
+        val workingsTV = findViewById<TextView>(R.id.workingsTV)
+        val resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         workingsTV.text = ""
         resultsTV.text = ""
     }
 
     fun backSpaceAction(view: View) {
+        val workingsTV = findViewById<TextView>(R.id.workingsTV)
+        val resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         val length = workingsTV.length()
         if (length > 0) {
             workingsTV.text = workingsTV.text.subSequence(0, length - 1)
@@ -53,6 +65,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun equalsAction(view: View) {
+        val workingsTV = findViewById<TextView>(R.id.workingsTV)
+        val resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         resultsTV.text = calculateResults()
     }
 
@@ -125,6 +140,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun digitsOperators(): MutableList<Any> {
+        var workingsTV = findViewById<TextView>(R.id.workingsTV)
+        var resultsTV = findViewById<TextView>(R.id.resultsTV)
+
         val list = mutableListOf<Any>()
         var currentDigit = ""
         for (character in workingsTV.text) {
