@@ -6,10 +6,10 @@ data class DataClass(var temperature: Int = 0) {
 }
 
 class Class {
-
+    var temperature: Int = 0
 }
 
 open class OpenClass {
-
+    var temperature: Int = 0
 }
 
