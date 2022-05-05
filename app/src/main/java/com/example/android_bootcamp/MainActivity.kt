@@ -12,13 +12,20 @@ class MainActivity : AppCompatActivity() {
     private var canAddDecimal = true
     private lateinit var workingsTV: TextView
     private lateinit var resultsTV: TextView
+    private lateinit var btnAllClearAction: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        workingsTV = findViewById<TextView>(R.id.workingsTV)
-        resultsTV = findViewById<TextView>(R.id.resultsTV)
+        workingsTV = findViewById(R.id.workingsTV)
+        this.resultsTV = findViewById(R.id.resultsTV)
+        btnAllClearAction = findViewById(R.id.btnAllClearAction)
+
+        btnAllClearAction.setOnClickListener {
+            workingsTV.text = ""
+            resultsTV.text = ""
+        }
     }
 
     fun numberAction(view: View) {
@@ -43,10 +50,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun allClearAction(view: View) {
+    /*fun allClearAction(view: View) {
         workingsTV.text = ""
         resultsTV.text = ""
-    }
+    }*/
 
     fun backSpaceAction(view: View) {
         val length = workingsTV.length()

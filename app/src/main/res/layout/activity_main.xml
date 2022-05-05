@@ -62,8 +62,8 @@
     <LinearLayout style="@style/buttonRow">
 
         <Button
+            android:id="@+id/btnAllClearAction"
             style="@style/buttonNumber"
-            android:onClick="allClearAction"
             android:text="AC"
             android:textColor="@color/red" />
 
@@ -127,11 +127,11 @@
 
         <Button
             style="@style/buttonNumber"
-            android:text="1" />
+            android:text="@string/number_one" />
 
         <Button
             style="@style/buttonNumber"
-            android:text="2" />
+            android:text="@string/number_two" />
 
         <Button
             style="@style/buttonNumber"
