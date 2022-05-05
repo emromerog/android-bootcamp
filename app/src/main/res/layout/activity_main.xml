@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:maxLines="1"
-            android:text="Basic Calculator"
+            android:text="@string/basic_calculator"
             android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="15sp"
