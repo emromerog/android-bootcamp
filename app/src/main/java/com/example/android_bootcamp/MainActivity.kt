@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         workingsTV = findViewById(R.id.workingsTV)
-        this.resultsTV = findViewById(R.id.resultsTV)
+        resultsTV = findViewById(R.id.resultsTV)
         btnAllClearAction = findViewById(R.id.btnAllClearAction)
 
         btnAllClearAction.setOnClickListener {
@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun operationAction(view: View) {
-        if (view is Button && canAddOperation) {
+        //Validar como mejora indicar los caracteres en vez del vacio
+        if (view is Button && canAddOperation && workingsTV.text.isNotEmpty()) {
             workingsTV.append(view.text)
             canAddOperation = false
             canAddDecimal = true
@@ -74,6 +75,9 @@ class MainActivity : AppCompatActivity() {
         if (timesDivision.isEmpty()) return ""
 
         val result = addSubtractCalculate(timesDivision)
+        if ((result.toDouble() % 1) == 0.0) {
+            return result.toInt().toString()
+        }
         return result.toString()
     }
 
